@@ -1,10 +1,13 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Components/Login-page/Login.jsx';
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to Moija SNS</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,6 +1,7 @@
 // src/components/Login-page/Login.jsx
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import './Login.css';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -33,7 +34,7 @@ function Login() {
 
     return (
         <div>
-            <h2>로그인 페이지</h2>
+            <h2>다함께 모이자!</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -48,12 +49,13 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">로그인</button>
+                <div>
+                    <p>아직 회원이 아니신가요?</p>
+                    <button>회원가입</button>
+                </div>
             </form>
 
-            <div>
-                <p>아직 회원이 아니신가요?</p>
-                <button>회원가입</button>
-            </div>
+
         </div>
     );
 }

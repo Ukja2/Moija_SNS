@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import style from './Signup.module.css';
 import { addressData } from '../../data/addressData';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -9,6 +10,7 @@ import { auth, db } from '../../firebase';
 
 
 function Signup() {
+    const navigate = useNavigate();
     // React Hook Form 라이브러리 폼 훅 사용
     const {
         register,
@@ -21,12 +23,14 @@ function Signup() {
     // Firebase Auth를 사용하여 사용자 등록 및 Firestore에 사용자 정보 저장
     const onSubmit = async (data) => {
         try {
+            
             // Firebase Auth에 사용자 등록(인증용)
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
                 data.password
             );
+            
 
             // Firestore에 사용자 정보 저장(데이터 저장용)
             await setDoc(doc(db, 'users', userCredential.user.uid), {
@@ -35,13 +39,18 @@ function Signup() {
                 location: `${data.sido} ${data.sigungu}`,
                 createdAt: new Date(),
             });
+            
 
             alert('회원가입이 완료되었습니다!');
+            setTimeout(() => {
+                navigate('/');
+            }, 300);
         } catch (error) {
+            
             alert(`회원가입에 실패했습니다: ${error.message}`);
         }
     };
-    
+
     // 선택된 시/도에 따라 시/군/구 옵션 동적 업데이트
     const selectedSido = watch('sido');
 

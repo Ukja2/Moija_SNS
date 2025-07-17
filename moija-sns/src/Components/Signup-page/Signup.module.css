@@ -1,0 +1,68 @@
+.signupContainer {
+  background: #fffdfa;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 28px rgba(213, 182, 130, 0.15);
+  border: 1px solid #e2d6b5;
+  max-width: 450px;
+  margin: 40px auto;
+}
+
+.signupTitle {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #6b4c1c;
+  margin-bottom: 30px;
+}
+
+.signupForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  border: 1px solid #e2d6b5;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #6b4c1c;
+  background: #fffdfa;
+}
+
+.inputField::placeholder {
+  color: #b99e84;
+}
+
+.locationSelect {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.selectBox {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e2d6b5;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fffdfa;
+  color: #6b4c1c;
+}
+
+.submitButton {
+  padding: 14px;
+  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(246, 173, 85, 0.3);
+}
+
+.submitButton:hover {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+}

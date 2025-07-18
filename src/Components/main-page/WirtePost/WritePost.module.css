@@ -1,0 +1,82 @@
+/* 전체 가운데 정렬용 */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fffdfa;
+}
+
+/* 폼 박스 */
+.container {
+  background-color: #ffffff;
+  padding: 40px;
+  border: 2px solid #e2d6b5;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #6b4c1c;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 입력창 공통 스타일 */
+.input,
+.textarea,
+.select {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1.5px solid #e2d6b5;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: #fffdf5;
+  color: #6b4c1c;
+  outline: none;
+  width: 100%;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #e6b955;
+  background-color: #fffbe8;
+}
+
+.textarea {
+  height: 150px;
+  resize: none;
+}
+
+.button {
+  padding: 12px;
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  color: #fffdfa;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #ffa500, #ffcc00);
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}

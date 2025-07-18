@@ -52,7 +52,7 @@ function PostList() {
                         <h3>{post.title}</h3>
                         <p>카테고리: {post.category}</p>
                         <p>{post.content}</p>
-                        <small>작성자: {post.author}</small>
+                        <small>작성자: {post.nickname}</small>
                     </div>
                 ))
             )}

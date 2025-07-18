@@ -15,6 +15,8 @@ function WritePost() {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
+
+
   // 로그인 안 했으면 로그인 페이지로 강제 이동
   useEffect(() => {
     if (!loading && !user) {
@@ -36,10 +38,13 @@ function WritePost() {
       const docRef = doc(db, 'users', user.uid); // firebase에서 현재 사용자 UID로 문서 주소 가져오기
       const docSnap = await getDoc(docRef); // docRef로부터 실제 데이터를 할당, 서버 통신으로 비동기처리
 
+      let nickname = '익명';
       let location = '위치정보 없음';
+
       if (docSnap.exists()) {
         const userData = docSnap.data();
-        location = userData.location;
+        location = userData.location || "위치정보 없음"; 
+        nickname = userData.nickname || '익명';
       }
 
       await addDoc(collection(db, 'posts'), {
@@ -48,6 +53,7 @@ function WritePost() {
         category: data.category,
         location: location,
         author: user?.email || '익명',
+        nickname: nickname || '익명',
         createdAt: serverTimestamp(),
       });
 

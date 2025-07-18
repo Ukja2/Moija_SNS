@@ -1,41 +1,52 @@
-.signupContainer {
-  background: #fffdfa;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 8px 28px rgba(213, 182, 130, 0.15);
-  border: 1px solid #e2d6b5;
-  max-width: 450px;
+.signupPageWrapper {
+  width: 100%;
+  max-width: 480px;
   margin: 0 auto;
+  min-height: 100vh;
+  padding: 40px 24px;
 
-  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
 
 .signupTitle {
   text-align: center;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 700;
   color: #6b4c1c;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
+}
+
+.signupTitle::before {
+  content: 'M';
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 42px;
+  text-align: center;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 .signupForm {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .inputField {
-  padding: 14px 18px;
-  margin-bottom: 16px;
+  padding: 16px;
   border: 1px solid #e2d6b5;
   border-radius: 12px;
+  background: #fffdfa;
   font-size: 16px;
   color: #6b4c1c;
-  background: #fffdfa;
 }
 
 .inputField::placeholder {
@@ -45,12 +56,11 @@
 .locationSelect {
   display: flex;
   gap: 12px;
-  margin-bottom: 20px;
 }
 
 .selectBox {
   flex: 1;
-  padding: 12px;
+  padding: 14px;
   border: 1px solid #e2d6b5;
   border-radius: 8px;
   font-size: 15px;
@@ -59,26 +69,27 @@
 }
 
 .submitButton {
-  padding: 14px;
+  padding: 16px;
   background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
   color: white;
   border: none;
   border-radius: 12px;
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(246, 173, 85, 0.3);
+  transition: all 0.3s ease;
 }
 
 .submitButton:hover {
   background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  transform: translateY(-2px);
 }
 
 .error {
-  margin-top: -10px; 
-  margin-bottom: 10px;
   font-size: 14px;
-  color: #d9534f; 
+  color: #d9534f;
   font-weight: 500;
+  margin-top: -8px;
+  margin-bottom: 8px;
   padding-left: 4px;
 }

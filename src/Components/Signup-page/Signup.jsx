@@ -55,7 +55,7 @@ function Signup() {
     const selectedSido = watch('sido');
 
     return (
-        <div className={style.signupContainer}>
+        <div className={style.signupPageWrapper}>
 
             <h2 className={style.signupTitle}>회원가입</h2>
 

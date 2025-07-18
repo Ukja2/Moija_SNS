@@ -1,73 +1,65 @@
 .pageWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-.loginContainer {
-  background: #fffdfa;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 8px 28px rgba(213, 182, 130, 0.15);
-  border: 1px solid #e2d6b5;
-  max-width: 400px;
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 64px 24px;
 }
 
 .loginTitle {
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 700;
   color: #6b4c1c;
-  position: relative;
-  letter-spacing: -0.5px;
+  margin-bottom: 32px;
 }
 
 .loginTitle::before {
   content: 'M';
   display: inline-block;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
-  border-radius: 16px;
+  border-radius: 12px;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 48px;
+  line-height: 42px;
   text-align: center;
-  margin-right: 12px;
+  margin-right: 10px;
   vertical-align: middle;
-  box-shadow: 0 4px 16px rgba(246, 173, 85, 0.3);
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .inputField {
   width: 100%;
-  padding: 16px 20px;
+  padding: 16px;
   border: 1px solid #e2d6b5;
   border-radius: 12px;
   background: #fffdfa;
   font-size: 16px;
-  margin-bottom: 16px;
   color: #6b4c1c;
-  transition: all 0.3s ease;
 }
 
 .inputField:focus {
   border-color: #f6ad55;
   box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.2);
-  transform: translateY(-1px);
 }
 
 .inputField::placeholder {
   color: #b99e84;
-  font-weight: 400;
 }
 
 .submitButton {
-  width: 100%;
   padding: 16px;
   background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
   color: white;
@@ -77,16 +69,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(246, 173, 85, 0.3);
-  margin-top: 8px;
-  margin-bottom: 24px;
 }
 
 .submitButton:hover {
   background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(234, 88, 12, 0.35);
 }
+
 
 .submitButton:disabled {
   background: #e6d3b3;
@@ -97,7 +86,7 @@
 
 .signupWrapper {
   text-align: center;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .signupWrapper p {
@@ -109,7 +98,7 @@
 
 .signupButton {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   background: #fffaf3;
   color: #6b4c1c;
   border: 1px solid #e2d6b5;
@@ -117,12 +106,12 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(213, 182, 130, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .signupButton:hover {
   background: #f7f4ef;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(139, 90, 43, 0.12);
+
+
 }

@@ -27,38 +27,37 @@ function Login() {
 
   return (
     <div className={style.pageWrapper}>
-      <div className={style.loginContainer}>
-        <h2 className={style.loginTitle}>다함께 모이자!</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="아이디 (이메일)"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className={style.inputField}
-          />
-          <input
-            type="password"
-            placeholder="비밀번호"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={style.inputField}
-          />
-          <button type="submit" className={style.submitButton} disabled={loading}>
-            {loading ? '로딩 중...' : '로그인'}
-          </button>
+      <h2 className={style.loginTitle}>다함께 모이자!</h2>
 
-          <div className={style.signupWrapper}>
-            <p>아직 회원이 아니신가요?</p>
-            <button
-              type="button"
-              className={style.signupButton}
-              onClick={() => navigate('/signup')}
-            >
-              회원가입
-            </button>
-          </div>
-        </form>
+      <form onSubmit={handleSubmit} className={style.loginForm}>
+        <input
+          type="text"
+          placeholder="아이디 (이메일)"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className={style.inputField}
+        />
+        <input
+          type="password"
+          placeholder="비밀번호"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={style.inputField}
+        />
+        <button type="submit" className={style.submitButton} disabled={loading}>
+          {loading ? '로딩 중...' : '로그인'}
+        </button>
+      </form>
+
+      <div className={style.signupWrapper}>
+        <p>아직 회원이 아니신가요?</p>
+        <button
+          type="button"
+          className={style.signupButton}
+          onClick={() => navigate('/signup')}
+        >
+          회원가입
+        </button>
       </div>
     </div>
   );

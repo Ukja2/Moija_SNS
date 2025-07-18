@@ -1,29 +1,27 @@
-/* 전체 가운데 정렬용 */
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
   min-height: 100vh;
   background-color: #fffdfa;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-/* 폼 박스 */
 .container {
-  background-color: #ffffff;
-  padding: 40px;
-  border: 2px solid #e2d6b5;
-  border-radius: 20px;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   color: #6b4c1c;
-  margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .form {
@@ -32,25 +30,23 @@
   gap: 16px;
 }
 
-/* 입력창 공통 스타일 */
 .input,
 .textarea,
 .select {
-  padding: 14px;
+  padding: 14px 18px;
   border-radius: 12px;
   border: 1.5px solid #e2d6b5;
   font-size: 16px;
   font-family: inherit;
   background-color: #fffdf5;
   color: #6b4c1c;
-  outline: none;
   width: 100%;
 }
 
 .input:focus,
 .textarea:focus,
 .select:focus {
-  border-color: #e6b955;
+  border-color: #f6ad55;
   background-color: #fffbe8;
 }
 
@@ -60,10 +56,10 @@
 }
 
 .button {
-  padding: 12px;
-  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  padding: 14px;
+  background: linear-gradient(135deg, #f6ad55, #ed8936);
   color: #fffdfa;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -71,12 +67,12 @@
 }
 
 .button:hover {
-  background: linear-gradient(135deg, #ffa500, #ffcc00);
+  background: linear-gradient(135deg, #f97316, #ea580c);
 }
 
 .error {
-  color: red;
+  color: #d9534f;
   font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 5px;
+  margin-top: -6px;
+  margin-bottom: 4px;
 }

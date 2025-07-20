@@ -25,3 +25,5 @@ yarn-error.log*
 
 # Firebase 호스팅 캐시 파일
 hosting.*.cache
+
+node_modules/

@@ -64,6 +64,7 @@ function WritePost() {
       });
 
       alert('포스팅을 완료했습니다!');
+      navigate('/home');
     } catch (err) {
       alert('글 작성 중 오류: ' + err.message);
     }

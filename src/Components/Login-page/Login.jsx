@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import style from './Login.module.css';
-import logo from '../logo.png';
 
 
 function Login() {
@@ -31,9 +30,10 @@ function Login() {
     <div className={style.pageWrapper}>
 
       <div className={style.logoWrapper}>
-        <img src={logo} alt="로고" className={style.logoIcon} />
+        <p className={style.logoSubtitle}>우리 동네, 익명으로 소통하는 공간</p>
         <h2 className={style.loginTitle}>다함께 모이자!</h2>
       </div>
+
 
       <form onSubmit={handleSubmit} className={style.loginForm}>
         <input

@@ -7,6 +7,7 @@ import {
   arrayRemove,
 } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import style from './PostItem.module.css';
 
 import { FaUserCircle, FaHeart } from 'react-icons/fa';
@@ -34,9 +35,11 @@ function formatTime(createdAt) {
 
 function PostItem({ post, refetch }) {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   const liked = post.likes?.includes(user?.uid);
 
-  const handleLike = async () => {
+  const handleLike = async (e) => {
+    e.stopPropagation();
     if (!user) return;
     const postRef = doc(db, 'posts', post.id);
     try {
@@ -49,19 +52,26 @@ function PostItem({ post, refetch }) {
     }
   };
 
-  const handleComment = () => {
-    window.location.href = `/post/${post.id}`;
+  const handleComment = (e) => {
+    e.stopPropagation();
+    navigate(`/post/${post.id}`);
   };
 
-  const handleShare = () => {
+  const handleShare = (e) => {
+    e.stopPropagation();
     const url = `${window.location.origin}/post/${post.id}`;
     navigator.clipboard.writeText(url)
       .then(() => alert('📋 공유 링크가 복사됐어요!'))
       .catch((err) => console.error('공유 실패:', err));
   };
 
+  const handleCardClick = () => {
+    navigate(`/post/${post.id}`);
+  };
+
+
   return (
-    <div className={style.card}>
+    <div className={style.card} onClick={handleCardClick}>
       {/* 프로필 영역 */}
       <div className={style.profile}>
         <FaUserCircle className={style.profileIcon} />

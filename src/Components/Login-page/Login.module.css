@@ -2,23 +2,26 @@
   --primary-color: #ff7f73;
   --primary-gradient: linear-gradient(135deg, #ff7f73, #ff7f73);
   --primary-hover: #ff665a;
-  --input-border: #ffaaa2;
-  --input-hover: rgba(255, 127, 115, 0.2);
-  --disabled-bg: #ffd6d2;
-
+  --input-border: #e5e5e5;
+  --input-focus: rgba(255, 127, 115, 0.1);
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-placeholder: #999999;
+  --disabled-bg: #f5f5f5;
+  --error-color: #e74c3c;
   --background: #ffffff;
 }
 
 .pageWrapper {
   width: 100%;
-  max-width: 480px;
+  max-width: 420px;
   margin: 0 auto;
   min-height: 100vh;
   background: var(--background);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 64px 24px;
+  padding: 32px 20px;
 }
 
 .logoWrapper {
@@ -32,7 +35,7 @@
 
 .logoSubtitle {
   font-size: 15px;
-  color: #999999;
+  color: var(--text-secondary);
   font-weight: 500;
   text-align: center;
 }
@@ -46,57 +49,62 @@
   text-align: center;
 }
 
-
 .loginForm {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .inputField {
   width: 100%;
-  padding: 16px;
+  padding: 18px 16px;
   border: 1px solid var(--input-border);
   border-radius: 12px;
   font-size: 16px;
-  color: #222222;
+  color: var(--text-primary);
   background: transparent;
+  transition: all 0.2s ease;
+  outline: none;
 }
 
 .inputField:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px var(--input-hover);
+  background: var(--input-focus);
 }
 
 .inputField::placeholder {
-  color: #cccccc;
+  color: var(--text-placeholder);
+  font-weight: 400;
 }
 
 .submitButton {
-  padding: 16px;
+  padding: 18px 16px;
   width: 100%;
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  margin-top: 8px;
 }
 
-.submitButton:hover {
+.submitButton:hover:not(:disabled) {
   background-color: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 127, 115, 0.3);
+  transform: translateY(-1px);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .submitButton:disabled {
   background-color: var(--disabled-bg);
+  color: var(--text-secondary);
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
 }
 
 .signupWrapper {
@@ -106,14 +114,14 @@
 
 .signupWrapper p {
   font-size: 15px;
-  color: #999999;
+  color: var(--text-secondary);
   margin-bottom: 12px;
   font-weight: 500;
 }
 
 .signupButton {
   width: 100%;
-  padding: 14px;
+  padding: 16px;
   background: #ffffff;
   color: var(--primary-color);
   border: 1px solid var(--input-border);
@@ -121,9 +129,38 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s ease;
 }
 
 .signupButton:hover {
-  background: #fff0f3;
+  background: var(--input-focus);
+  border-color: var(--primary-color);
+}
+
+.error {
+  font-size: 14px;
+  color: var(--error-color);
+  font-weight: 500;
+  margin-top: -12px;
+  margin-bottom: 4px;
+  padding-left: 2px;
+  line-height: 1.4;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .pageWrapper {
+    padding: 24px 16px;
+    max-width: 100%;
+  }
+  
+  .inputField,
+  .submitButton,
+  .signupButton {
+    font-size: 16px; /* iOS 줌 방지 */
+  }
+  
+  .loginTitle {
+    font-size: 28px;
+  }
 }

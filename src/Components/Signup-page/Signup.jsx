@@ -57,7 +57,7 @@ function Signup() {
     return (
         <div className={style.signupPageWrapper}>
 
-            <h2 className={style.signupTitle}>회원가입</h2>
+
 
             <form onSubmit={handleSubmit(onSubmit)} className={style.signupForm}>
                 <input

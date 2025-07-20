@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #ff7f73;
+  --primary-hover: #ff665a;
+  --input-border: #ffaaa2;
+  --input-hover: rgba(255, 127, 115, 0.2);
+  --disabled-bg: #ffd6d2;
+  --background: #ffffff;
+}
+
 .signupPageWrapper {
   width: 100%;
   max-width: 480px;
@@ -10,30 +19,6 @@
   justify-content: center;
 }
 
-.signupTitle {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: #6b4c1c;
-  margin-bottom: 32px;
-}
-
-.signupTitle::before {
-  content: 'M';
-  display: inline-block;
-  width: 42px;
-  height: 42px;
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
-  border-radius: 12px;
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 42px;
-  text-align: center;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
 .signupForm {
   display: flex;
   flex-direction: column;
@@ -42,15 +27,20 @@
 
 .inputField {
   padding: 16px;
-  border: 1px solid #e2d6b5;
+  border: 1px solid var(--input-border);
   border-radius: 12px;
-  background: #fffdfa;
+  background: transparent;
   font-size: 16px;
-  color: #6b4c1c;
+  color: #222222;
+}
+
+.inputField:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--input-hover);
 }
 
 .inputField::placeholder {
-  color: #b99e84;
+  color: #cccccc;
 }
 
 .locationSelect {
@@ -61,28 +51,43 @@
 .selectBox {
   flex: 1;
   padding: 14px;
-  border: 1px solid #e2d6b5;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
   font-size: 15px;
-  background: #fffdfa;
-  color: #6b4c1c;
+  background: transparent;
+  color: #222222;
+}
+
+.selectBox:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--input-hover);
 }
 
 .submitButton {
   padding: 16px;
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  width: 100%;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .submitButton:hover {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background-color: var(--primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 127, 115, 0.3);
+}
+
+.submitButton:disabled {
+  background-color: var(--disabled-bg);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .error {

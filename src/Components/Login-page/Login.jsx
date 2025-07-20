@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import style from './Login.module.css';
+import logo from '../logo.png';
+
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -27,7 +29,11 @@ function Login() {
 
   return (
     <div className={style.pageWrapper}>
-      <h2 className={style.loginTitle}>다함께 모이자!</h2>
+
+      <div className={style.logoWrapper}>
+        <img src={logo} alt="로고" className={style.logoIcon} />
+        <h2 className={style.loginTitle}>다함께 모이자!</h2>
+      </div>
 
       <form onSubmit={handleSubmit} className={style.loginForm}>
         <input

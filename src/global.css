@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 
 * {
   margin: 0;
@@ -7,22 +9,21 @@
 }
 
 html {
-  background-color: white;
+  background-color: #ffffff; 
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  color: #6b4c1c;
+  color: #222; 
 
   max-width: 500px;
   margin: 0 auto;
 
-  background-color: #fffffd;
-
+  background-color: #ffffff; 
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); 
 }
 
 

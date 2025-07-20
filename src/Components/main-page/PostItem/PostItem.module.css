@@ -1,103 +1,326 @@
-.card {
-  width: 100%;
-  margin-bottom: 24px;
-  border-bottom: 1px solid #e0e0e0;
-  box-sizing: border-box;
-  padding: 4px 16px 16px 16px; 
+/* PostItem.module.css */
+:root {
+  --primary-color: #ff7f73;
+  --primary-hover: #ff665a;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --bg-white: #ffffff;
+  --bg-gray: #f8f9fa;
+  --border-light: #e9ecef;
+  --border-lighter: #f1f3f4;
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --border-radius: 0;
+  --border-radius-small: 6px;
 }
 
+.card {
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-light);
+  padding: 24px 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
 
+.card:hover {
+  background: var(--bg-gray);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--primary-color);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.card:hover::after {
+  transform: scaleY(1);
+}
 
 .profile {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 0 24px;
 }
 
 .profileIcon {
-  font-size: 32px;
-  color: grey;
+  font-size: 40px;
+  color: var(--text-tertiary);
+  transition: color 0.2s ease;
+}
+
+.card:hover .profileIcon {
+  color: var(--primary-color);
 }
 
 .nickname {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 15px;
   color: var(--text-primary);
+  display: block;
+  margin-bottom: 2px;
+  letter-spacing: -0.01em;
 }
 
 .location {
-  display: block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .content {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 16px;
   color: var(--text-primary);
-  padding: 0;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  padding: 0 24px;
+  word-break: break-word;
 }
 
 .tags {
+  margin-top: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 8px;
-  font-size: 12.5px;
-  color: var(--primary-color);
+}
+
+.tags span {
+  background: var(--bg-gray);
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border-lighter);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.tags span:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
 }
 
 .actions {
   display: flex;
-  justify-content: flex-start;
-  gap: 20px;
-  padding: 12px 0 4px;
-  font-size: 24px;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 12px;
+  padding: 12px 24px;
+  border-top: 1px solid var(--border-lighter);
+  border-bottom: 1px solid var(--border-lighter);
+  background: rgba(248, 249, 250, 0.5);
 }
 
 .actions button {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 2px;
-  color: var(--text-primary);
-  transition: transform 0.15s ease;
+  padding: 8px;
+  border-radius: var(--border-radius-small);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .actions button:hover {
-  transform: scale(1.08);
-  color: var(--primary-color);
+  background: var(--bg-white);
+  box-shadow: var(--shadow-subtle);
+}
+
+.actions button:active {
+  transform: scale(0.98);
 }
 
 .icon {
-  font-size: 22px;
+  font-size: 18px;
+  color: var(--text-tertiary);
+  transition: color 0.2s ease;
 }
 
-.heartIcon {
-  color: var(--primary-color);
-  transition: transform 0.1s ease, color 0.2s ease;
+.actions button:hover .icon {
+  color: var(--text-secondary);
 }
 
 .heartIcon.outline {
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
+}
+
+.heartIcon:not(.outline) {
+  color: var(--primary-color);
+  animation: heartPulse 0.4s ease-out;
 }
 
 .actions button:hover .heartIcon.outline {
   color: var(--primary-color);
-  transform: scale(1.1);
+}
+
+.actions button:hover .heartIcon:not(.outline) {
+  color: var(--primary-hover);
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .likes {
-  font-size: 13px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
   font-weight: 500;
-  color: var(--text-primary);
-  margin-top: 4px;
+  padding: 0 24px;
 }
 
 .comments {
-  font-size: 12.5px;
-  color: var(--text-secondary);
-  margin-top: 4px;
+  font-size: 14px;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 24px;
+  transition: all 0.2s ease;
+  border-radius: 0;
+  position: relative;
+}
+
+.comments:hover {
+  color: var(--primary-color);
+  background: linear-gradient(90deg, rgba(255, 127, 115, 0.05) 0%, transparent 100%);
+}
+
+.comments::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.comments:hover::before {
+  width: 20px;
+}
+
+.comments:hover {
+  padding-left: 54px;
+}
+
+/* 구분선 스타일 */
+.card:not(:last-child) {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.card:first-child {
+  border-top: 1px solid var(--border-light);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .card {
+    padding: 20px 0;
+  }
+  
+  .profile {
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 0 16px;
+  }
+  
+  .profileIcon {
+    font-size: 36px;
+  }
+  
+  .nickname {
+    font-size: 14px;
+  }
+  
+  .location {
+    font-size: 12px;
+  }
+  
+  .content {
+    font-size: 15px;
+    padding: 0 16px;
+    margin-bottom: 12px;
+  }
+  
+  .actions {
+    gap: 20px;
+    padding: 12px 16px;
+  }
+  
+  .actions button {
+    padding: 6px;
+  }
+  
+  .icon {
+    font-size: 16px;
+  }
+  
+  .tags span {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+  
+  .likes,
+  .comments {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .comments::before {
+    left: 16px;
+  }
+  
+  .comments:hover {
+    padding-left: 46px;
+  }
+}
+
+/* 포커스 상태 */
+.card:focus-within {
+  outline: 2px solid rgba(255, 127, 115, 0.2);
+  outline-offset: -2px;
+}
+
+.actions button:focus {
+  outline: 2px solid rgba(255, 127, 115, 0.3);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 접근성 개선 */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .actions button,
+  .comments,
+  .tags span,
+  .profileIcon,
+  .icon {
+    transition: none;
+  }
+  
+  .heartIcon:not(.outline) {
+    animation: none;
+  }
 }

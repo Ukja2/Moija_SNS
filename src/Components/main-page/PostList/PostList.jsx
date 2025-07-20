@@ -27,6 +27,8 @@ function PostList() {
   const [user] = useAuthState(auth);
   const [allPosts, setAllPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [userLocation, setUserLocation] = useState('');
+
 
   // 게시물 불러오기
   const fetchPosts = useCallback(async () => {
@@ -38,6 +40,7 @@ function PostList() {
 
       if (userSnap.exists()) {
         const location = userSnap.data().location;
+        setUserLocation(location);
         const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
         const snapshot = await getDocs(q);
 
@@ -66,14 +69,15 @@ function PostList() {
 
   return (
     <div className={style.feedWrapper}>
-      {/* 🔹 카테고리 선택 바 */}
+      <div className={style.locationText}>
+        현재 나의 위치는? <strong>{userLocation} </strong> !
+      </div>
       <div className={style.categoryBar}>
         {categoryList.map((cat) => (
           <button
             key={cat}
-            className={`${style.categoryBtn} ${
-              selectedCategory === cat ? style.active : ''
-            }`}
+            className={`${style.categoryBtn} ${selectedCategory === cat ? style.active : ''
+              }`}
             onClick={() => setSelectedCategory(cat)}
           >
             {cat}
@@ -81,7 +85,6 @@ function PostList() {
         ))}
       </div>
 
-      {/* 🔹 게시글 목록 */}
       {filteredPosts.length === 0 ? (
         <p className={style.emptyText}>게시글이 없어요!</p>
       ) : (

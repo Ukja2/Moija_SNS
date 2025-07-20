@@ -1,5 +1,19 @@
 .feedWrapper {
   padding: 12px;
+  padding-bottom: 60px;
+}
+
+
+.locationText {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: var(--background); /* or #fffdfa */
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #6b4c1c;
+  font-weight: 500;
+  border-bottom: 1px solid #f0e6d2;
 }
 
 .categoryBar {

@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { db, auth } from '../../../firebase';
-import { doc, getDoc } from 'firebase/firestore';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './WritePost.module.css';
 
-
 function WritePost() {
-
-
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
-
-
-  // 로그인 안 했으면 로그인 페이지로 강제 이동
   useEffect(() => {
     if (!loading && !user) {
       alert('로그인한 사용자만 글을 작성할 수 있어요!');
@@ -31,84 +30,85 @@ function WritePost() {
     formState: { errors },
   } = useForm();
 
-  const categoryList = ['잡담', '동네소식', '같이해요', '질문', '나눔'];
+  const categoryList = [
+    '일상/잡담',
+    '질문/궁금',
+    '추천/후기',
+    '도움요청',
+    '나눔/교환',
+    '동네소식',
+    '동네장터',
+  ];
 
   const onSubmit = async (data) => {
     try {
-      const docRef = doc(db, 'users', user.uid); // firebase에서 현재 사용자 UID로 문서 주소 가져오기
-      const docSnap = await getDoc(docRef); // docRef로부터 실제 데이터를 할당, 서버 통신으로 비동기처리
+      const docRef = doc(db, 'users', user.uid);
+      const docSnap = await getDoc(docRef);
 
       let nickname = '익명';
       let location = '위치정보 없음';
 
       if (docSnap.exists()) {
         const userData = docSnap.data();
-        location = userData.location || "위치정보 없음"; 
+        location = userData.location || '위치정보 없음';
         nickname = userData.nickname || '익명';
       }
 
       await addDoc(collection(db, 'posts'), {
-        title: data.title,
         content: data.content,
         category: data.category,
-        location: location,
+        location,
         author: user?.email || '익명',
-        nickname: nickname || '익명',
+        nickname,
         createdAt: serverTimestamp(),
       });
 
       alert('포스팅을 완료했습니다!');
     } catch (err) {
-      alert('글 작성 중 오류가 발생했습니다: ' + err.message);
+      alert('글 작성 중 오류: ' + err.message);
     }
   };
 
-
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>글쓰기</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <input
-            type="text"
-            placeholder="제목을 입력하세요"
-            className={styles.input}
-            {...register('title', {
-              required: '제목을 입력해주세요',
-            })}
-          />
-          {errors.title && <p className={styles.error}>{errors.title.message}</p>}
+      <h2 className={styles.title}>게시물 작성</h2>
+      <p className={styles.tip}>
+        💡 이웃들과 따뜻하게 소통할 수 있는 내용을 작성해주세요. <br />
+        개인정보나 부적절한 내용은 피해 주세요.
+      </p>
 
-          <select
-            defaultValue=""
-            {...register('category', { required: '카테고리를 선택해주세요' })}
-            className={styles.select}
-          >
-            <option value="" disabled>
-              카테고리를 선택해주세요
-            </option>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.categoryBox}>
+          <p className={styles.label}>카테고리</p>
+          <div className={styles.categoryOptions}>
             {categoryList.map((cat) => (
-              <option key={cat} value={cat}>
+              <label key={cat} className={styles.categoryTag}>
+                <input
+                  type="radio"
+                  value={cat}
+                  {...register('category', { required: '카테고리를 선택해주세요' })}
+                />
                 {cat}
-              </option>
+              </label>
             ))}
-          </select>
+          </div>
           {errors.category && <p className={styles.error}>{errors.category.message}</p>}
+        </div>
 
+        <div className={styles.textareaBox}>
           <textarea
-            placeholder="내용을 입력하세요"
+            placeholder="이웃들과 나누고 싶은 이야기를 자유롭게 작성해주세요!"
             className={styles.textarea}
-            {...register('content', {
-              required: '내용을 입력해주세요',
-            })}
+            {...register('content', { required: '내용을 입력해주세요' })}
+            maxLength={1000}
           />
           {errors.content && <p className={styles.error}>{errors.content.message}</p>}
+        </div>
 
-          <button type="submit" className={styles.button}>
-            작성 완료
-          </button>
-        </form>
-      </div>
+        <button type="submit" className={styles.button}>
+          작성 완료
+        </button>
+      </form>
     </div>
   );
 }

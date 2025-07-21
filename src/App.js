@@ -4,7 +4,7 @@ import Signup from './Components/Signup-page/Signup.jsx';
 import WritePost from './Components/main-page/WirtePost/WritePost.jsx';
 import HomePage from './Components/main-page/HomePage/Homepage.jsx';
 import DetailPost from './Components/main-page/DetailPost/DetailPost.jsx';
-
+import Calendar from './Components/Calendar-page/Calendar.jsx';
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
         <Route path="/home/write" element={<WritePost />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/post/:id" element={<DetailPost />} />
+        <Route path="/home/calendar" element={<Calendar />} />
       </Routes>
     </Router>
   );

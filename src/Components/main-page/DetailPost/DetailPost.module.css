@@ -1,22 +1,3 @@
-:root {
-  --primary-color: #ff7f73;
-  --primary-hover: #ff665a;
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
-  --bg-white: #ffffff;
-  --bg-gray: #f8f9fa;
-  --border-light: #e9ecef;
-  --border-lighter: #f1f3f4;
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --border-radius: 0;
-  --border-radius-small: 6px;
-}
-
-
-/* 로딩 스타일 추가 */
 .loadingWrapper {
   display: flex;
   flex-direction: column;
@@ -373,7 +354,6 @@
   margin: 0;
 }
 
-/* 반응형 디자인 */
 @media (max-width: 768px) {
   .postContentArea {
     padding: 20px 16px;
@@ -449,7 +429,7 @@
   }
 }
 
-/* 접근성 개선 */
+
 @media (prefers-reduced-motion: reduce) {
   .postContentArea,
   .iconBtn,
@@ -468,7 +448,7 @@
   }
 }
 
-/* 포커스 상태 */
+
 .postContentArea:focus-within {
   outline: 2px solid rgba(99, 102, 241, 0.2);
   outline-offset: -2px;
@@ -485,7 +465,7 @@
   outline: none;
 }
 
-/* 삭제 버튼 스타일 */
+
 .commentItem button {
   background: transparent;
   border: none;

@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-
+import BottomNav from '../ButtonNav/BottomNav';
 import styles from './WritePost.module.css';
 
 function WritePost() {
@@ -110,6 +110,7 @@ function WritePost() {
           작성 완료
         </button>
       </form>
+      <BottomNav />
     </div>
   );
 }

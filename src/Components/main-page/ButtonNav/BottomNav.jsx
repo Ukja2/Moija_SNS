@@ -14,7 +14,7 @@ function BottomNav() {
     { icon: <AiFillHome />, path: '/home', label: '홈' },
     { icon: <MdGroups />, path: '/home/group', label: '모임' },
     { icon: <AiOutlinePlusCircle />, path: '/home/write', label: '글쓰기' },
-    { icon: <RiCalendarLine />, path: '/home/calendar', label: '캘린더' },,
+    { icon: <RiCalendarLine />, path: '/home/calendar', label: '캘린더' },
     { icon: <CgProfile />, path: '/home/profile', label: '프로필' },
   ];
 

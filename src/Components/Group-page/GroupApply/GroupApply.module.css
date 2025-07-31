@@ -1,0 +1,136 @@
+.userIntro {
+    color: var(--primary-color);
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.title {
+    font-family: 'Jua', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.input {
+    padding: 18px 16px;
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    background: transparent;
+    font-size: 16px;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.input:focus {
+    border-color: var(--primary-color);
+    background: var(--input-focus);
+}
+
+.input::placeholder {
+    color: var(--text-placeholder);
+    font-weight: 400;
+}
+
+.submitBtn {
+    padding: 18px 16px;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.submitBtn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submitBtn:disabled {
+    background-color: var(--disabled-bg);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.error {
+    font-size: 14px;
+    color: var(--error-color);
+    font-weight: 500;
+    margin-top: 4px;
+    padding-left: 2px;
+    line-height: 1.4;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 24px;
+  color: var(--text-primary);
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 16px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 22px;
+        margin-bottom: 28px;
+    }
+
+    .input,
+    .submitBtn {
+        font-size: 16px;
+    }
+
+    .form {
+        gap: 18px;
+    }
+
+    .form label {
+        font-size: 15px;
+    }
+}

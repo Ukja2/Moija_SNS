@@ -17,22 +17,10 @@
   --disabled-bg: #f5f5f5;
   --error-color: #e74c3c;
 
-  --bg-white: #ffffff;
-  --bg-gray: #f8f9fa;
-  --subtle-bg: #fff3f2;
-  --background: #ffffff;
+  --background: #ffffff; 
 
   --border-light: #e9ecef;
   --border-lighter: #f1f3f4;
-
-  --card-shadow: rgba(0, 0, 0, 0.08);
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-medium: 0 4px 12px rgba(255, 127, 115, 0.12);
-  --shadow-soft: 0 2px 8px rgba(255, 127, 115, 0.08);
-
-  --border-radius: 0;
-  --border-radius-small: 6px;
 
   --primary-gradient: linear-gradient(135deg, #ff7f73, #ff7f73);
   --gradient-bg: linear-gradient(135deg, #fff9f8 0%, #fffdfa 100%);

@@ -24,6 +24,32 @@
     gap: 16px;
 }
 
+
+.fab {
+    position: absolute;
+    bottom: 100px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff7f73, #ff665a);
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
 @media (min-width: 600px) {
     .listWrapper {
         grid-template-columns: 1fr 1fr;

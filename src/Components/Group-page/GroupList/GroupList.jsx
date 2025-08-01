@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { db, auth } from '../../../firebase';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
@@ -9,6 +10,7 @@ function GroupList() {
     const [user] = useAuthState(auth);
     const [allGroups, setAllGroups] = useState([]);
     const [userLocation, setUserLocation] = useState('');
+    const navigate = useNavigate();
 
     const fetchGroups = useCallback(async () => {
         if (!user) return;
@@ -46,6 +48,14 @@ function GroupList() {
                     ))}
                 </div>
             )}
+
+            <button
+                className={styles.fab}
+                onClick={() => navigate('/home/group/create')}
+            >
+                +
+            </button>
+
         </div>
     );
 

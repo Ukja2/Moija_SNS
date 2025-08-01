@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--background);
+  padding: 16px;
+  padding-bottom: 100px; /* ✅ 하단 네비바 고려 */
+  box-sizing: border-box;
+}
+
+.contentArea {
+  flex: 1;
+  background: var(--bg-white);
+  border: 1.5px solid #f0e6d2;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ border로만 섹션 나누기 */
+.section {
+  padding: 16px 0;
+  border-bottom: 1px solid #f0e6d2;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #6b4c1c;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+/* ✅ 텍스트 스타일을 PostList 느낌으로 */
+.contentArea p {
+  font-size: 14px;
+  color: #6b4c1c;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* ✅ 그룹 카드 / 신청 카드 */
+.groupCard,
+.applicationCard {
+  background: var(--subtle-bg);
+  border: 1px solid #f0e6d2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #6b4c1c;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* ✅ 버튼 그룹 */
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.acceptBtn {
+  flex: 1;
+  background: #f49b94;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.acceptBtn:hover {
+  background: #ff7f73;
+}
+
+.rejectBtn {
+  flex: 1;
+  background: #fff0f0;
+  color: #6b4c1c;
+  border: 1px solid #f49b94;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.rejectBtn:hover {
+  background: #ffe2e2;
+}
+
+/* ✅ 로그아웃 버튼은 지금 형태 유지 */
+.logoutBtn {
+  width: 100%;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 20px;
+}
+
+.logoutBtn:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-light);
+}

@@ -58,6 +58,7 @@ function WritePost() {
         content: data.content,
         category: data.category,
         location,
+        uid: user.uid, 
         author: user?.email || '익명',
         nickname,
         createdAt: serverTimestamp(),

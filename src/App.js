@@ -8,6 +8,7 @@ import Calendar from './Components/Calendar-page/Calendar.jsx';
 import GroupPage from './Components/Group-page/GroupPage/GroupPage.jsx';
 import GroupApply from './Components/Group-page/GroupApply/GroupApply.jsx';
 import CreateGroup from './Components/Group-page/CreateGroup/CreateGroup.jsx';
+import Profile from './Components/Profile-page/Profile.jsx';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/home/group" element={<GroupPage />} />
         <Route path="/home/group/apply/:groupId" element={<GroupApply />} />
         <Route path="/home/group/create" element={<CreateGroup />} />
+        <Route path="/home/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

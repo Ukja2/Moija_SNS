@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { db, auth } from '../../../firebase';
 import {
     doc,
@@ -42,6 +42,7 @@ function formatTime(createdAt) {
 
 function DetailPost() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const [post, setPost] = useState(null);
     const [commentText, setCommentText] = useState('');
@@ -70,17 +71,13 @@ function DetailPost() {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const q = query(
-                    collection(db, 'posts', id, 'comments'),
-                    orderBy('createdAt', 'desc')
-                );
+                const q = query(collection(db, 'posts', id, 'comments'), orderBy('createdAt', 'desc'));
                 const snapshot = await getDocs(q);
                 const fetched = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
                 }));
                 setComments(fetched);
-
             } catch (error) {
                 console.error('댓글 불러오기 실패:', error);
             }
@@ -88,11 +85,22 @@ function DetailPost() {
         fetchComments();
     }, [id]);
 
+    const handleDeletePost = async () => {
+        if (!window.confirm('정말 이 게시글을 삭제할까요?')) return;
+        try {
+            await deleteDoc(doc(db, 'posts', id));
+            alert('게시글이 삭제되었습니다.');
+            navigate('/home');
+        } catch (error) {
+            console.error('게시글 삭제 실패:', error);
+        }
+    };
+
     const handleAddComment = async () => {
         const userRef = doc(db, 'users', user.uid);
         const userSnap = await getDoc(userRef);
         const nickname = userSnap.exists() ? userSnap.data().nickname : '익명';
-        
+
         if (!user || commentText.trim() === '' || isSubmitting) return;
 
         setIsSubmitting(true);
@@ -180,6 +188,11 @@ function DetailPost() {
                         <div className={styles.nickname}>{post.nickname}</div>
                         <div className={styles.timestamp}>{formatTime(post.createdAt)}</div>
                     </div>
+                    {user?.uid === post.uid && ( // 게시글 작성자만 삭제 버튼 보이기
+                        <button onClick={handleDeletePost} className={styles.deleteBtn}>
+                            <FaTrashAlt /> 삭제
+                        </button>
+                    )}
                 </div>
 
                 <p className={styles.postContent}>{post.content}</p>
@@ -223,19 +236,26 @@ function DetailPost() {
                         <p className={styles.noComments}>첫 댓글을 남겨보세요!</p>
                     ) : (
                         comments.map((comment) => (
-                            <div key={comment.id} className={styles.commentItem}>
+                            <div className={styles.commentItem}>
                                 <FaUserCircle className={styles.commentAvatar} />
                                 <div style={{ flex: 1 }}>
-                                    <div className={styles.commentNickname}>{comment.nickname}</div>
+                                    <div className={styles.commentHeader}>
+                                        <div className={styles.commentNickname}>{comment.nickname}</div>
+                                        {user?.uid === comment.uid && (
+                                            <button
+                                                className={styles.deleteBtn}
+                                                onClick={() => handleDeleteComment(comment.id)}
+                                            >
+                                                <FaTrashAlt />
+                                            </button>
+                                        )}
+                                    </div>
                                     <div className={styles.commentTime}>{formatTime(comment.createdAt)}</div>
                                     <div className={styles.commentText}>{comment.text}</div>
                                 </div>
-                                {user?.uid === comment.uid && (
-                                    <button onClick={() => handleDeleteComment(comment.id)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#999' }}>
-                                        <FaTrashAlt />
-                                    </button>
-                                )}
                             </div>
+
+
                         ))
                     )}
                 </div>

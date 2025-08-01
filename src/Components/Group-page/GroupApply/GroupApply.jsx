@@ -4,7 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db, auth } from '../../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { AiOutlineArrowLeft } from 'react-icons/ai'; 
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { doc, getDoc } from 'firebase/firestore';
 import styles from './GroupApply.module.css';
 
 function GroupApply() {
@@ -15,11 +16,17 @@ function GroupApply() {
 
   const onSubmit = async (data) => {
     if (!user) return alert('로그인이 필요합니다!');
-    
+
     try {
+      const groupRef = doc(db, 'groups', groupId);
+      const groupSnap = await getDoc(groupRef);
+      const creatorId = groupSnap.data().creatorId;
+
       await addDoc(collection(db, 'applications'), {
         groupId,
         userId: user.uid,
+        toUserId: creatorId,
+        status: "pending",
         ...data,
         createdAt: serverTimestamp(),
       });

@@ -243,7 +243,49 @@
 
 
 .selectedInfo {
-  border-top: 1px solid rgba(255, 170, 162, 0.2);
-  margin-top: 15px;
-  padding-top: 10px;
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--bg-white);
+  border: 1px solid rgba(255, 170, 162, 0.25);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  animation: fadeInUp 0.4s ease;
+}
+
+.selectedInfo h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 8px;
+  letter-spacing: -0.01em;
+}
+
+.groupList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.groupItem {
+  background: var(--subtle-bg);
+  border: 1px solid rgba(255, 170, 162, 0.2);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.groupItem:hover {
+  background: var(--bg-white);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+.groupItem strong {
+  color: var(--primary-color);
+  font-weight: 600;
 }

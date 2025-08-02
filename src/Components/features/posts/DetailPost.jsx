@@ -236,7 +236,7 @@ function DetailPost() {
                         <p className={styles.noComments}>첫 댓글을 남겨보세요!</p>
                     ) : (
                         comments.map((comment) => (
-                            <div className={styles.commentItem}>
+                            <div key={comment.id} className={styles.commentItem}>
                                 <FaUserCircle className={styles.commentAvatar} />
                                 <div style={{ flex: 1 }}>
                                     <div className={styles.commentHeader}>
@@ -254,11 +254,10 @@ function DetailPost() {
                                     <div className={styles.commentText}>{comment.text}</div>
                                 </div>
                             </div>
-
-
                         ))
                     )}
                 </div>
+
             </div>
         </>
     );

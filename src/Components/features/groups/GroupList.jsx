@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { db, auth } from '../../../firebase';
+import { db, auth } from '../../../firebase.js';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import GroupItem from '../GroupItem/GroupItem.jsx';
+import GroupItem from './GroupItem.jsx';
 import styles from './GroupList.module.css';
 
 function GroupList() {

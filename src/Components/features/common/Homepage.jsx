@@ -2,8 +2,8 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase';
 import { Navigate } from 'react-router-dom';
-import PostList from '../PostList/PostList'; 
-import BottomNav from '../ButtonNav/BottomNav'; 
+import PostList from '../posts/PostList'; 
+import BottomNav from './BottomNav'; 
 
 function HomePage() {
   const [user, loading] = useAuthState(auth);

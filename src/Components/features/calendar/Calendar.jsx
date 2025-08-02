@@ -11,9 +11,9 @@ import {
   isSameMonth,
   isToday,
 } from 'date-fns';
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import BottomNav from '../main-page/ButtonNav/BottomNav';
+import BottomNav from '../common/BottomNav';
 import styles from './Calendar.module.css';
 
 function Calendar() {

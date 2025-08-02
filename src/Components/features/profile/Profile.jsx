@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { db, auth } from "../../firebase";
+import { db, auth } from "../../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { doc, getDoc, collection, getDocs, query, where, updateDoc, arrayUnion, deleteDoc } from "firebase/firestore";
 import styles from "./Profile.module.css";
-import BottomNav from "../main-page/ButtonNav/BottomNav";
+import BottomNav from "../common/BottomNav";
 import { useNavigate } from "react-router-dom";
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { db, auth } from '../../../firebase';
+import { db, auth } from '../../../firebase.js';
 import {
   collection,
   getDocs,
@@ -9,7 +9,7 @@ import {
   getDoc,
 } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import PostItem from '../PostItem/PostItem.jsx';
+import PostItem from './PostItem.jsx';
 import style from './PostList.module.css';
 
 const categoryList = [

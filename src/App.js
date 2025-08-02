@@ -1,15 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './Components/Login-page/Login.jsx';
-import Signup from './Components/Signup-page/Signup.jsx';
-import WritePost from './Components/main-page/WirtePost/WritePost.jsx';
-import HomePage from './Components/main-page/HomePage/Homepage.jsx';
-import DetailPost from './Components/main-page/DetailPost/DetailPost.jsx';
-import Calendar from './Components/Calendar-page/Calendar.jsx';
-import GroupPage from './Components/Group-page/GroupPage/GroupPage.jsx';
-import GroupApply from './Components/Group-page/GroupApply/GroupApply.jsx';
-import CreateGroup from './Components/Group-page/CreateGroup/CreateGroup.jsx';
-import Profile from './Components/Profile-page/Profile.jsx';
-
+import Login from './Components/features/auth/Login';
+import Signup from './Components/features/auth/Signup';
+import HomePage from './Components/features/common/Homepage';
+import DetailPost from './Components/features/posts/DetailPost';
+import WritePost from './Components/features/posts/WritePost';
+import Calendar from './Components/features/calendar/Calendar';
+import GroupPage from './Components/features/common/GroupPage';
+import GroupApply from './Components/features/groups/GroupApply';
+import CreateGroup from './Components/features/groups/CreateGroup';
+import Profile from './Components/features/profile/Profile';
 
 function App() {
   return (

@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../ButtonNav/BottomNav';
+import BottomNav from '../common/BottomNav';
 import styles from './WritePost.module.css';
 
 function WritePost() {

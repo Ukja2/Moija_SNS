@@ -1,6 +1,6 @@
 import React from "react";
-import GroupList from "../GroupList/GroupList";
-import BottomNav from "../../main-page/ButtonNav/BottomNav";
+import GroupList from "../groups/GroupList";
+import BottomNav from "./BottomNav";
 
 function GroupPage() {
 

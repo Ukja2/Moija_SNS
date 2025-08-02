@@ -1,3 +1,4 @@
+/* 달력 전체 컨테이너 */
 .calendarWrapper {
   width: 100%;
   max-width: 580px;
@@ -6,8 +7,10 @@
   background: white;
   min-height: 100vh;
   box-sizing: border-box;
+  animation: fadeInUp 0.6s ease;
 }
 
+/* 달력 상단 헤더 (월 이동 버튼 + 현재 월) */
 .calendarHeader {
   display: flex;
   justify-content: space-between;
@@ -20,6 +23,7 @@
   border: 1px solid rgba(255, 170, 162, 0.2);
 }
 
+/* 이전/다음 달 네비게이션 버튼 */
 .navButton {
   background: white;
   border: 2px solid var(--input-border);
@@ -56,19 +60,7 @@
   margin-right: 3px;
 }
 
-.navButton:hover {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
-}
-
-.navButton:active {
-  transform: translateY(0);
-  transition: all 0.2s ease;
-}
-
+/* 현재 월 텍스트 */
 .currentMonth {
   font-size: 24px;
   font-weight: 700;
@@ -78,6 +70,7 @@
   flex: 1;
 }
 
+/* 요일 행 */
 .daysRow {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -86,6 +79,7 @@
   padding: 0 8px;
 }
 
+/* 요일 이름 */
 .dayName {
   text-align: center;
   font-weight: 600;
@@ -98,12 +92,7 @@
   transition: all 0.3s ease;
 }
 
-.dayName:hover {
-  background: rgba(255, 243, 242, 0.8);
-  transform: translateY(-1px);
-}
-
-
+/* 주 단위 행 */
 .calendarRow {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -112,6 +101,7 @@
   padding: 0 8px;
 }
 
+/* 달력 셀 (각 날짜) */
 .calendarCell {
   aspect-ratio: 1;
   display: flex;
@@ -142,33 +132,14 @@
   transition: left 0.6s;
 }
 
-.calendarCell:hover {
-  background: var(--subtle-bg);
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-.calendarCell:hover::before {
-  left: 100%;
-}
-
-
+/* 이번 달이 아닌 날짜 */
 .notCurrentMonth {
   color: var(--text-color);
   opacity: 0.3;
   background: rgba(255, 243, 242, 0.2);
 }
 
-.notCurrentMonth:hover {
-  opacity: 0.6;
-  background: rgba(255, 243, 242, 0.4);
-  transform: translateY(-1px);
-}
-
-
+/* 오늘 날짜 */
 .today {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
   color: white;
@@ -178,24 +149,54 @@
   animation: todayPulse 2s infinite;
 }
 
-.today:hover {
-  background: linear-gradient(135deg, var(--primary-hover), #ff5045);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 127, 115, 0.4);
+/* 모임이 있는 날짜 */
+.hasEvent {
+  background: #fff3f0;
+  border-color: #ffcfc2;
+  box-shadow: inset 0 0 0 2px #ffd7cc;
 }
 
-@keyframes todayPulse {
-  0% {
-    box-shadow: 0 4px 16px rgba(255, 127, 115, 0.3);
-  }
+/* 선택한 날짜 모임 정보 */
+.selectedInfo {
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--bg-white);
+  border: 1px solid rgba(255, 170, 162, 0.25);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  animation: fadeInUp 0.4s ease;
+}
 
-  50% {
-    box-shadow: 0 6px 20px rgba(255, 127, 115, 0.5);
-  }
+.selectedInfo h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 8px;
+  letter-spacing: -0.01em;
+}
 
-  100% {
-    box-shadow: 0 4px 16px rgba(255, 127, 115, 0.3);
-  }
+/* 날짜별 모임 리스트 */
+.groupList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.groupItem {
+  background: var(--subtle-bg);
+  border: 1px solid rgba(255, 170, 162, 0.2);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.groupItem strong {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 @media (max-width: 480px) {
@@ -229,63 +230,15 @@
   }
 }
 
-.hasEvent {
-  background: #fff3f0;
-  border-color: #ffcfc2;
-  box-shadow: inset 0 0 0 2px #ffd7cc;
-}
-
-
-.calendarWrapper {
-  animation: fadeInUp 0.6s ease;
-}
-
-
-
-.selectedInfo {
-  margin-top: 20px;
-  padding: 16px;
-  background: var(--bg-white);
-  border: 1px solid rgba(255, 170, 162, 0.25);
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
-  animation: fadeInUp 0.4s ease;
-}
-
-.selectedInfo h4 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 12px;
-  border-left: 4px solid var(--primary-color);
-  padding-left: 8px;
-  letter-spacing: -0.01em;
-}
-
-.groupList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.groupItem {
-  background: var(--subtle-bg);
-  border: 1px solid rgba(255, 170, 162, 0.2);
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 14px;
-  color: var(--text-primary);
-  transition: all 0.2s ease;
-}
-
-.groupItem:hover {
-  background: var(--bg-white);
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-light);
-}
-
-.groupItem strong {
-  color: var(--primary-color);
-  font-weight: 600;
+/* 오늘 날짜 강조 애니메이션 */
+@keyframes todayPulse {
+  0% {
+    box-shadow: 0 4px 16px rgba(255, 127, 115, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(255, 127, 115, 0.5);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(255, 127, 115, 0.3);
+  }
 }

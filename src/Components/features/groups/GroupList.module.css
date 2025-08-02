@@ -1,9 +1,11 @@
+/* 컨테이너 레이아웃 */
 .container {
     padding: 24px;
     max-width: 800px;
     margin-bottom: 60px;
 }
 
+/* 모임 목록 헤더 */
 .heading {
     font-size: 1rem;
     color: var(--text-color);
@@ -11,6 +13,7 @@
     text-align: center;
 }
 
+/* 모임이 없을 때 메시지 */
 .empty {
     font-size: 1rem;
     color: var(--text-secondary);
@@ -18,13 +21,14 @@
     padding: 40px 0;
 }
 
+/* 모임 리스트 래퍼 */
 .listWrapper {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
 }
 
-
+/* 플로팅 액션 버튼 (모임 생성 버튼) */
 .fab {
     position: absolute;
     bottom: 100px;
@@ -43,11 +47,6 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.fab:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 @media (min-width: 600px) {

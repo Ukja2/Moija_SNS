@@ -1,3 +1,4 @@
+/* 하단 네비게이션 바 컨테이너 */
 .navbar {
   position: fixed;
   bottom: 0;
@@ -18,6 +19,7 @@
   transition: all 0.3s ease;
 }
 
+/* 개별 네비게이션 아이템 */
 .navItem {
   position: relative;
   display: flex;
@@ -35,6 +37,7 @@
   overflow: hidden;
 }
 
+/* 네비게이션 아이템 활성화 시 배경 */
 .navItem::before {
   content: '';
   position: absolute;
@@ -50,20 +53,7 @@
   opacity: 0;
 }
 
-.navItem:hover {
-  color: var(--primary-color);
-  transform: translateY(-2px);
-}
-
-.navItem:hover::before {
-  transform: scale(1);
-  opacity: 0.1;
-}
-
-.navItem:active {
-  transform: translateY(0) scale(0.95);
-}
-
+/* 활성화 상태 */
 .navItem.active {
   color: #ffffff;
   background: var(--primary-color);
@@ -89,26 +79,13 @@
   opacity: 0.6;
 }
 
-/* 아이콘 애니메이션 */
+/* 네비게이션 아이콘 */
 .navItem svg {
   transition: all 0.2s ease;
   position: relative;
   z-index: 1;
 }
 
-.navItem:hover svg {
-  transform: scale(1.1);
-}
-
-.navItem.active svg {
-  transform: scale(1.05);
-}
-
-/* 물결 효과 제거 및 간소화 */
-
-/* 키프레임 애니메이션 제거 */
-
-/* 반응형 디자인 */
 @media (max-width: 480px) {
   .navbar {
     width: 100vw;
@@ -124,4 +101,3 @@
     border-radius: 22px;
   }
 }
-

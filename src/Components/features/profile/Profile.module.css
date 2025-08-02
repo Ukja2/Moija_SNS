@@ -1,13 +1,15 @@
+/* 컨테이너 */
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: var(--background);
   padding: 16px;
-  padding-bottom: 100px; /* ✅ 하단 네비바 고려 */
+  padding-bottom: 100px;
   box-sizing: border-box;
 }
 
+/* 메인 콘텐츠 영역 */
 .contentArea {
   flex: 1;
   background: var(--bg-white);
@@ -19,7 +21,7 @@
   flex-direction: column;
 }
 
-/* ✅ border로만 섹션 나누기 */
+/* 섹션 */
 .section {
   padding: 16px 0;
   border-bottom: 1px solid #f0e6d2;
@@ -29,6 +31,7 @@
   border-bottom: none;
 }
 
+/* 섹션 타이틀 */
 .sectionTitle {
   font-size: 15px;
   font-weight: 700;
@@ -37,7 +40,7 @@
   letter-spacing: -0.5px;
 }
 
-/* ✅ 텍스트 스타일을 PostList 느낌으로 */
+/* 기본 텍스트 */
 .contentArea p {
   font-size: 14px;
   color: #6b4c1c;
@@ -45,7 +48,7 @@
   margin-bottom: 6px;
 }
 
-/* ✅ 그룹 카드 / 신청 카드 */
+/* 그룹 카드 & 신청 카드 */
 .groupCard,
 .applicationCard {
   background: var(--subtle-bg);
@@ -58,13 +61,14 @@
   margin-top: 8px;
 }
 
-/* ✅ 버튼 그룹 */
+/* 버튼 그룹 */
 .buttonGroup {
   display: flex;
   gap: 8px;
   margin-top: 8px;
 }
 
+/* 수락 버튼 */
 .acceptBtn {
   flex: 1;
   background: #f49b94;
@@ -82,6 +86,7 @@
   background: #ff7f73;
 }
 
+/* 거절 버튼 */
 .rejectBtn {
   flex: 1;
   background: #fff0f0;
@@ -99,7 +104,7 @@
   background: #ffe2e2;
 }
 
-/* ✅ 로그아웃 버튼은 지금 형태 유지 */
+/* 로그아웃 버튼 */
 .logoutBtn {
   width: 100%;
   background: var(--primary-color);

@@ -1,6 +1,6 @@
+/* 페이지 전체 레이아웃 */
 .pageWrapper {
   width: 100%;
-  max-width: 420px;
   margin: 0 auto;
   min-height: 100vh;
   background: var(--background);
@@ -10,6 +10,7 @@
   padding: 32px 20px;
 }
 
+/* 로고/타이틀 영역 */
 .logoWrapper {
   display: flex;
   flex-direction: column;
@@ -35,12 +36,14 @@
   text-align: center;
 }
 
+/* 로그인 폼 */
 .loginForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+/* 입력 필드 */
 .inputField {
   width: 100%;
   padding: 18px 16px;
@@ -63,6 +66,7 @@
   font-weight: 400;
 }
 
+/* 로그인 버튼 */
 .submitButton {
   padding: 18px 16px;
   width: 100%;
@@ -93,6 +97,7 @@
   transform: none;
 }
 
+/* 회원가입 영역 */
 .signupWrapper {
   text-align: center;
   margin-top: 24px;
@@ -105,6 +110,7 @@
   font-weight: 500;
 }
 
+/* 회원가입 버튼 */
 .signupButton {
   width: 100%;
   padding: 16px;
@@ -123,6 +129,7 @@
   border-color: var(--primary-color);
 }
 
+/* 에러 메시지 */
 .error {
   font-size: 14px;
   color: var(--error-color);
@@ -133,7 +140,6 @@
   line-height: 1.4;
 }
 
-/* 반응형 디자인 */
 @media (max-width: 480px) {
   .pageWrapper {
     padding: 24px 16px;
@@ -143,7 +149,7 @@
   .inputField,
   .submitButton,
   .signupButton {
-    font-size: 16px; /* iOS 줌 방지 */
+    font-size: 16px; 
   }
   
   .loginTitle {

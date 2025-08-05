@@ -9,24 +9,18 @@ import {
     getDocs,
     query,
     where,
-    updateDoc,
-    arrayUnion,
-    deleteDoc,
     onSnapshot,
 } from "firebase/firestore";
+
 import styles from "./Profile.module.css";
 import BottomNav from "../common/BottomNav";
 import { useNavigate } from "react-router-dom";
-import { FaBell } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
-
+import { FaBell, FaUserCircle } from "react-icons/fa";
 
 function Profile() {
     const [user] = useAuthState(auth);
     const [userNickname, setUserNickname] = useState("");
     const [userLocation, setUserLocation] = useState("");
-    const [myGroups, setMyGroups] = useState([]);
-    const [receivedApplications, setReceivedApplications] = useState([]);
     const [hasNotification, setHasNotification] = useState(false);
     const navigate = useNavigate();
 
@@ -42,49 +36,31 @@ function Profile() {
         });
 
         async function fetchUserData() {
-            // 유저 닉네임, 지역 출력
             const userSnap = await getDoc(userRef);
             if (userSnap.exists()) {
-                setUserNickname(userSnap.data().nickname);
-                setUserLocation(userSnap.data().location);
+                const data = userSnap.data();
+                setUserNickname(data.nickname);
+                setUserLocation(data.location);
             }
 
-            // 유저가 만든 모임 출력
-            const groupSnap = await getDocs(groupQuery);
-            setMyGroups(groupSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-
-            // 받은 모임 신청 출력 (최초 1회만)
-            const appSnap = await getDocs(appQuery);
-            setReceivedApplications(appSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+            
+            await getDocs(groupQuery); 
+            await getDocs(appQuery);   
         }
 
         fetchUserData();
 
-        // 언마운트 시 실시간 리스너 해제
         return () => unsubscribe();
     }, [user]);
 
-    async function handleDecision(app, status) {
-        if (status === "accepted") {
-            const groupRef = doc(db, "groups", app.groupId);
-            await updateDoc(groupRef, {
-                members: arrayUnion(app.userId),
-            });
-        }
-
-        const appRef = doc(db, "applications", app.id);
-        await deleteDoc(appRef);
-        setReceivedApplications(prev => prev.filter(a => a.id !== app.id));
-    }
-
-    async function handleLogout() {
+    const handleLogout = async () => {
         try {
             await signOut(auth);
             navigate("/");
         } catch (err) {
             console.error("로그아웃 실패:", err.message);
         }
-    }
+    };
 
     return (
         <div className={styles.container}>
@@ -98,8 +74,10 @@ function Profile() {
                 <div className={styles.notificationWrapper} onClick={() => navigate("/home/profile/notifications")}>
                     <div className={styles.notificationTab}>
                         <span>받은 모임 신청</span>
-                        <FaBell className={styles.bellIcon} />
-                        {hasNotification && <span className={styles.badge} />}
+                        <div className={styles.iconWrapper}>
+                            <FaBell className={styles.bellIcon} />
+                            {hasNotification && <span className={styles.badge} />}
+                        </div>
                     </div>
                 </div>
 
@@ -109,8 +87,6 @@ function Profile() {
                         <FaUserCircle className={styles.bellIcon} />
                     </div>
                 </div>
-
-
 
                 <button onClick={handleLogout} className={styles.logoutBtn}>로그아웃</button>
             </div>

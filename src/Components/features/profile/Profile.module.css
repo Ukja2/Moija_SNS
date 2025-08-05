@@ -70,21 +70,27 @@
   transform: translateY(-2px);
 }
 
-/* 알림/게시물 아이콘 */
+.iconWrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .bellIcon {
-  font-size: 18px;
+  font-size: 20px;
   color: #ff7f73;
 }
 
-/* 알림 뱃지 */
 .badge {
-  display: inline-block;
+  position: absolute;
+  top: -4px;
+  right: -4px;
   width: 10px;
   height: 10px;
-  background-color: #ff7f73;
+  background-color: #ff3b30;
   border-radius: 50%;
-  margin-left: 8px;
+  border: 2px solid #fff; /* 테두리로 구분감 */
 }
+
 
 /* 로그아웃 버튼 */
 .logoutBtn {
@@ -105,3 +111,4 @@
   background-color: #ff7f73;
   color: white;
 }
+

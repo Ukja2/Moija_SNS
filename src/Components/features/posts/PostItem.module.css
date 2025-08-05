@@ -218,36 +218,9 @@
   font-size: 14px;
   color: var(--text-tertiary);
   font-weight: 500;
-  cursor: pointer;
   padding: 8px 24px;
-  transition: all 0.2s ease;
   border-radius: 0;
   position: relative;
-}
-
-.comments:hover {
-  color: var(--primary-color);
-  background: linear-gradient(90deg, rgba(255, 127, 115, 0.05) 0%, transparent 100%);
-}
-
-.comments::before {
-  content: '';
-  position: absolute;
-  left: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 2px;
-  background: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.comments:hover::before {
-  width: 20px;
-}
-
-.comments:hover {
-  padding-left: 54px;
 }
 
 /* 첫 번째, 마지막 카드 테두리 */

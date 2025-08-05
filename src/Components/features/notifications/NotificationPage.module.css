@@ -1,53 +1,41 @@
-.wrapper {
-  padding: 20px;
-}
-
-.card {
-  background: #fffdfa;
-  padding: 16px;
-  margin-bottom: 12px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-}
-
-.buttons {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.acceptBtn {
-  background: #ff7f73;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.rejectBtn {
-  background: #ccc;
-  color: #333;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
+/* 전체 레이아웃 */
 .wrapper {
   padding: 24px 16px;
   min-height: 100vh;
   background: var(--background);
 }
 
-.title {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--text-primary);
-  margin-bottom: 16px;
+/* 상단 헤더 영역 */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
-/* 알림 카드 */
+/* 뒤로가기 버튼 */
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.backIcon {
+  font-size: 20px;
+  color: inherit;
+}
+
+.backText {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+/* 카드 */
 .card {
   background: var(--subtle-bg);
   padding: 16px;
@@ -58,13 +46,22 @@
   font-size: 14px;
 }
 
-/* 버튼 그룹 */
+/* 모임명 */
+.groupTitle {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+/* 버튼 영역 */
 .buttons {
   display: flex;
   gap: 8px;
   margin-top: 10px;
 }
 
+/* 수락 버튼 */
 .acceptBtn {
   flex: 1;
   background: #f49b94;
@@ -81,6 +78,7 @@
   background: #ff7f73;
 }
 
+/* 거절 버튼 */
 .rejectBtn {
   flex: 1;
   background: #fff0f0;
@@ -97,7 +95,7 @@
   background: #ffe2e2;
 }
 
-/* 신청 없을 때 상태 */
+/* 신청 없을 때 */
 .emptyState {
   background: #fffdfa;
   border: 1px dashed #e2d6b5;

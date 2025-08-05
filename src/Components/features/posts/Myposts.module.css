@@ -2,13 +2,6 @@
   padding: 24px;
 }
 
-.title {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-}
-
 .empty {
   font-size: 16px;
   color: var(--text-tertiary);
@@ -24,6 +17,7 @@
   transition: all 0.2s ease;
   position: relative;
   width: 100%;
+  
 }
 
 .card:hover {
@@ -86,4 +80,32 @@
 
 .commentIcon {
   color: var(--text-tertiary);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* 뒤로가기 버튼 공통 */
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.backIcon {
+  font-size: 20px;
+  color: inherit;
+}
+
+.backText {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }

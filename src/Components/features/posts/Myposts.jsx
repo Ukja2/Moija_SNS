@@ -7,6 +7,7 @@ import { FiMessageCircle } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import styles from './Myposts.module.css';
 
+import { FiArrowLeft } from 'react-icons/fi';
 
 function Myposts() {
     const [posts, setPosts] = useState([]);
@@ -58,9 +59,20 @@ function Myposts() {
         return `${yy}.${mm}.${dd}`;
     }
 
+    const handleBack = () => {
+        navigate(-1);
+    };
+
+
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>내가 작성한 게시물</h2>
+            <div className={styles.header}>
+                <div className={styles.backButton} onClick={handleBack}>
+                    <FiArrowLeft className={styles.backIcon} />
+                    <span className={styles.backText}>내가 작성한 게시물</span>
+                </div>
+            </div>
+            
             {posts.length > 0 ? (
                 posts.map((post) => (
                     <div key={post.id} className={styles.card} onClick={() => navigate(`/post/${post.id}`)} >

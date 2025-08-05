@@ -10,6 +10,7 @@ import GroupApply from './Components/features/groups/GroupApply';
 import CreateGroup from './Components/features/groups/CreateGroup';
 import Profile from './Components/features/profile/Profile';
 import NotificationPage from './Components/features/notifications/NotificationPage';
+import MyPosts from './Components/features/posts/Myposts';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/home/group/create" element={<CreateGroup />} />
         <Route path="/home/profile" element={<Profile />} />
         <Route path="/home/profile/notifications" element={<NotificationPage />} />
+        <Route path="/home/profile/myposts" element={<MyPosts />} />
       </Routes>
     </Router>
   );

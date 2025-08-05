@@ -1,0 +1,116 @@
+.wrapper {
+  padding: 20px;
+}
+
+.card {
+  background: #fffdfa;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.acceptBtn {
+  background: #ff7f73;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.rejectBtn {
+  background: #ccc;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  padding: 24px 16px;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6b4c1c;
+  margin-bottom: 20px;
+}
+
+/* 알림 카드 */
+.card {
+  background: var(--subtle-bg);
+  padding: 16px;
+  border: 1px solid #f0e6d2;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  color: #6b4c1c;
+  font-size: 14px;
+}
+
+/* 버튼 그룹 */
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.acceptBtn {
+  flex: 1;
+  background: #f49b94;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.acceptBtn:hover {
+  background: #ff7f73;
+}
+
+.rejectBtn {
+  flex: 1;
+  background: #fff0f0;
+  color: #6b4c1c;
+  border: 1px solid #f49b94;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.rejectBtn:hover {
+  background: #ffe2e2;
+}
+
+/* 📭 신청 없을 때 상태 */
+.emptyState {
+  background: #fffdfa;
+  border: 1px dashed #e2d6b5;
+  border-radius: 12px;
+  padding: 32px 20px;
+  text-align: center;
+  color: #6b4c1c;
+  font-size: 15px;
+  margin-top: 40px;
+}
+
+.subText {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #9c7f53;
+}

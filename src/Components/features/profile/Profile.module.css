@@ -48,9 +48,8 @@
   margin-bottom: 6px;
 }
 
-/* 그룹 카드 & 신청 카드 */
-.groupCard,
-.applicationCard {
+/* 그룹 카드 */
+.groupCard {
   background: var(--subtle-bg);
   border: 1px solid #f0e6d2;
   border-radius: 8px;
@@ -59,49 +58,6 @@
   color: #6b4c1c;
   font-weight: 500;
   margin-top: 8px;
-}
-
-/* 버튼 그룹 */
-.buttonGroup {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-/* 수락 버튼 */
-.acceptBtn {
-  flex: 1;
-  background: #f49b94;
-  color: white;
-  border: none;
-  padding: 8px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.acceptBtn:hover {
-  background: #ff7f73;
-}
-
-/* 거절 버튼 */
-.rejectBtn {
-  flex: 1;
-  background: #fff0f0;
-  color: #6b4c1c;
-  border: 1px solid #f49b94;
-  padding: 8px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.rejectBtn:hover {
-  background: #ffe2e2;
 }
 
 /* 로그아웃 버튼 */
@@ -122,4 +78,46 @@
 .logoutBtn:hover {
   background: var(--primary-hover);
   box-shadow: var(--shadow-light);
+}
+
+
+.notificationWrapper {
+  margin: 16px 0;
+  cursor: pointer;
+}
+
+.notificationTab {
+  background: var(--subtle-bg);
+  border: 1px solid #f0e6d2;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b4c1c;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.notificationTab:hover {
+  background: #fff6f4;
+}
+
+/* 벨 아이콘 */
+.bellIcon {
+  font-size: 18px;
+  color: #ff7f73;
+}
+
+/* 빨간 알림 뱃지 */
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
 }

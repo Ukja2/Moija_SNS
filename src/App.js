@@ -9,6 +9,7 @@ import GroupPage from './Components/features/common/GroupPage';
 import GroupApply from './Components/features/groups/GroupApply';
 import CreateGroup from './Components/features/groups/CreateGroup';
 import Profile from './Components/features/profile/Profile';
+import NotificationPage from './Components/features/notifications/NotificationPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/home/group/apply/:groupId" element={<GroupApply />} />
         <Route path="/home/group/create" element={<CreateGroup />} />
         <Route path="/home/profile" element={<Profile />} />
+        <Route path="/home/profile/notifications" element={<NotificationPage />} />
       </Routes>
     </Router>
   );

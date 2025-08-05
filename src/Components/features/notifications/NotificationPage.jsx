@@ -50,7 +50,7 @@ function NotificationPage() {
                 ))
             ) : (
                 <div className={styles.emptyState}>
-                    <p>💌 아직 도착한 신청이 없어요.</p>
+                    <p> 아직 도착한 신청이 없어요.</p>
                     <p className={styles.subText}>모임을 만들고 친구들의 신청을 기다려보세요!</p>
                 </div>
             )}

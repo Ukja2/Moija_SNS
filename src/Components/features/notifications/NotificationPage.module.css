@@ -41,10 +41,10 @@
 }
 
 .title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #6b4c1c;
-  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 16px;
 }
 
 /* 알림 카드 */
@@ -97,7 +97,7 @@
   background: #ffe2e2;
 }
 
-/* 📭 신청 없을 때 상태 */
+/* 신청 없을 때 상태 */
 .emptyState {
   background: #fffdfa;
   border: 1px dashed #e2d6b5;

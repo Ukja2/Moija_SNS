@@ -18,6 +18,8 @@ import styles from "./Profile.module.css";
 import BottomNav from "../common/BottomNav";
 import { useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+
 
 function Profile() {
     const [user] = useAuthState(auth);
@@ -93,19 +95,6 @@ function Profile() {
                     <p><strong>지역:</strong> {userLocation}</p>
                 </div>
 
-                <div className={styles.section}>
-                    <h3 className={styles.sectionTitle}>내가 만든 모임</h3>
-                    {myGroups.length > 0 ? (
-                        myGroups.map(group => (
-                            <div key={group.id} className={styles.groupCard}>
-                                <p>{group.title}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>아직 만든 모임이 없습니다.</p>
-                    )}
-                </div>
-
                 <div className={styles.notificationWrapper} onClick={() => navigate("/home/profile/notifications")}>
                     <div className={styles.notificationTab}>
                         <span>받은 모임 신청</span>
@@ -113,6 +102,14 @@ function Profile() {
                         {hasNotification && <span className={styles.badge} />}
                     </div>
                 </div>
+
+                <div className={styles.notificationWrapper} onClick={() => navigate("/home/profile/myposts")}>
+                    <div className={styles.notificationTab}>
+                        <span>내가 쓴 게시물</span>
+                        <FaUserCircle className={styles.bellIcon} />
+                    </div>
+                </div>
+
 
 
                 <button onClick={handleLogout} className={styles.logoutBtn}>로그아웃</button>

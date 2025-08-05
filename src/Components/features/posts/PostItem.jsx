@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { db, auth } from '../../../firebase';
 import {
   doc,
@@ -33,20 +33,30 @@ function formatTime(createdAt) {
   return `${yy}.${mm}.${dd}`;
 }
 
-function PostItem({ post, refetch }) {
+function PostItem({ post }) {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  const liked = post.likes?.includes(user?.uid);
+
+  const [localPost, setLocalPost] = useState(post);
+
+  const liked = localPost.likes?.includes(user?.uid);
 
   const handleLike = async (e) => {
     e.stopPropagation();
     if (!user) return;
+
     const postRef = doc(db, 'posts', post.id);
+
+    const updatedLikes = liked
+      ? localPost.likes.filter(uid => uid !== user.uid)
+      : [...(localPost.likes || []), user.uid];
+
+    setLocalPost({ ...localPost, likes: updatedLikes });
+
     try {
       await updateDoc(postRef, {
         likes: liked ? arrayRemove(user.uid) : arrayUnion(user.uid),
       });
-      if (refetch) refetch();
     } catch (err) {
       console.error('좋아요 처리 실패:', err);
     }
@@ -69,31 +79,30 @@ function PostItem({ post, refetch }) {
     navigate(`/post/${post.id}`);
   };
 
-
   return (
     <div className={style.card} onClick={handleCardClick}>
       {/* 프로필 영역 */}
       <div className={style.profile}>
         <FaUserCircle className={style.profileIcon} />
         <div>
-          <span className={style.nickname}>{post.nickname}</span>
+          <span className={style.nickname}>{localPost.nickname}</span>
           <span className={style.location}>
-            {post.location} · {formatTime(post.createdAt)}
+            {localPost.location} · {formatTime(localPost.createdAt)}
           </span>
         </div>
       </div>
 
-      {/* 내용 */}
+      {/* 게시물 내용 */}
       <div className={style.content}>
-        {post.content}
+        {localPost.content}
         <div className={style.tags}>
-          {post.tags?.map((tag, idx) => (
+          {localPost.tags?.map((tag, idx) => (
             <span key={idx}>#{tag}</span>
           ))}
         </div>
       </div>
 
-      {/* 좋아요, 댓글, 공유 */}
+      {/* 좋아요/댓글/공유 버튼 */}
       <div className={style.actions}>
         <button onClick={handleLike}>
           {liked ? (
@@ -110,10 +119,14 @@ function PostItem({ post, refetch }) {
         </button>
       </div>
 
-      <p className={style.likes}>이웃 {post.likes?.length || 0}명이 좋아합니다</p>
+      {/* 좋아요 수 */}
+      <p className={style.likes}>
+        이웃 {localPost.likes?.length || 0}명이 좋아합니다
+      </p>
 
+      {/* 댓글 수 */}
       <div className={style.comments}>
-        댓글 {post.commentCount || 0}개 모두 보기
+        댓글 {localPost.commentCount || 0}개 모두 보기
       </div>
     </div>
   );

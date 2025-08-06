@@ -15,7 +15,7 @@ import {
 import styles from "./Profile.module.css";
 import BottomNav from "../common/BottomNav";
 import { useNavigate } from "react-router-dom";
-import { FaBell, FaUserCircle } from "react-icons/fa";
+import { FaBell, FaUserCircle, FaRegEdit } from "react-icons/fa";
 
 function Profile() {
     const [user] = useAuthState(auth);
@@ -43,9 +43,9 @@ function Profile() {
                 setUserLocation(data.location);
             }
 
-            
-            await getDocs(groupQuery); 
-            await getDocs(appQuery);   
+
+            await getDocs(groupQuery);
+            await getDocs(appQuery);
         }
 
         fetchUserData();
@@ -64,11 +64,17 @@ function Profile() {
 
     return (
         <div className={styles.container}>
+            <h3 className={styles.sectionTitle}>내 프로필</h3>
             <div className={styles.contentArea}>
                 <div className={styles.section}>
-                    <h3 className={styles.sectionTitle}>프로필</h3>
-                    <p><strong>닉네임:</strong> {userNickname}</p>
-                    <p><strong>지역:</strong> {userLocation}</p>
+                    <div className={styles.profileHeader}>
+                        <FaUserCircle className={styles.profileIcon} />
+                        <p className={styles.profileInfo}>
+                            {userNickname} | {userLocation}
+                        </p>
+                    </div>
+
+
                 </div>
 
                 <div className={styles.notificationWrapper} onClick={() => navigate("/home/profile/notifications")}>
@@ -84,7 +90,7 @@ function Profile() {
                 <div className={styles.notificationWrapper} onClick={() => navigate("/home/profile/myposts")}>
                     <div className={styles.notificationTab}>
                         <span>내가 쓴 게시물</span>
-                        <FaUserCircle className={styles.bellIcon} />
+                        <FaRegEdit className={styles.bellIcon} />
                     </div>
                 </div>
 

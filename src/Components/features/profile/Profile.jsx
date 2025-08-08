@@ -15,7 +15,9 @@ import {
 import styles from "./Profile.module.css";
 import BottomNav from "../common/BottomNav";
 import { useNavigate } from "react-router-dom";
+
 import { FaBell, FaUserCircle, FaRegEdit } from "react-icons/fa";
+import { MdGroups } from "react-icons/md";
 
 function Profile() {
     const [user] = useAuthState(auth);
@@ -91,6 +93,13 @@ function Profile() {
                     <div className={styles.notificationTab}>
                         <span>내가 쓴 게시물</span>
                         <FaRegEdit className={styles.bellIcon} />
+                    </div>
+                </div>
+
+                <div className={styles.notificationWrapper} onClick={() => navigate("/home/profile/mygroups")}>
+                    <div className={styles.notificationTab}>
+                        <span>내가 만든 모임</span>
+                        <MdGroups className={styles.bellIcon} />
                     </div>
                 </div>
 

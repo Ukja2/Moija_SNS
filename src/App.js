@@ -11,6 +11,7 @@ import CreateGroup from './Components/features/groups/CreateGroup';
 import Profile from './Components/features/profile/Profile';
 import NotificationPage from './Components/features/notifications/NotificationPage';
 import MyPosts from './Components/features/posts/Myposts';
+import MyGroups from './Components/features/groups/Mygroups';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/home/profile" element={<Profile />} />
         <Route path="/home/profile/notifications" element={<NotificationPage />} />
         <Route path="/home/profile/myposts" element={<MyPosts />} />
+        <Route path="/home/profile/mygroups" element={<MyGroups />} />
       </Routes>
     </Router>
   );

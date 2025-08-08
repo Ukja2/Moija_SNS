@@ -24,6 +24,9 @@
 
   --primary-gradient: linear-gradient(135deg, #ff7f73, #ff7f73);
   --gradient-bg: linear-gradient(135deg, #fff9f8 0%, #fffdfa 100%);
+
+  --bottom-nav-h: 72px; 
+  --safe-bottom: env(safe-area-inset-bottom, 0px); 
 }
 
 

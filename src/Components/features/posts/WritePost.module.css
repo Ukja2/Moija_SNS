@@ -4,6 +4,9 @@
   max-width: 580px;
   margin: 0 auto;
   padding: 32px 24px;
+  
+  /* 하단 네비+안전영역+여유공간 */
+  padding-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + 16px);
   background: white;
   min-height: 100vh;
   box-sizing: border-box;
@@ -144,7 +147,11 @@
   border: none;
   border-radius: 16px;
   cursor: pointer;
-  margin-top: 40px;
+  margin-top: 10px;
+
+  /* 하단 네비+안전영역+여유공간 */
+  margin-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + 8px);
+
   box-shadow: var(--shadow-medium);
   position: relative;
   overflow: hidden;

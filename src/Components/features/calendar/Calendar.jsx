@@ -13,6 +13,8 @@ import {
 } from 'date-fns';
 import { db } from '../../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../../firebase';
 import BottomNav from '../common/BottomNav';
 import styles from './Calendar.module.css';
 
@@ -21,28 +23,34 @@ function Calendar() {
   const [groupMap, setGroupMap] = useState({});               // 날짜별 모임 정보
   const [selectedDate, setSelectedDate] = useState(null);     // 클릭한 날짜
 
+  const [user] = useAuthState(auth);
+  const userId = user?.uid;
+
   useEffect(() => {
     const fetchGroups = async () => {
       const snapshot = await getDocs(collection(db, 'groups'));
       const map = {}; // 날짜별로 데이터 정리할 객체
 
       snapshot.forEach((doc) => {
-        const group = doc.data();      
-        const dateKey = group.date;    // 날짜 키 
+        const group = doc.data();
+        const dateKey = group.date; // 날짜 키
 
-        // 날짜가 처음 나오면 배열 만들기
-        if (!map[dateKey]) {
-          map[dateKey] = [];
+        // firestore의 group 컬렉션에 현재 사용자 ID가 포함된 모임만 필터링
+        if (group.members?.includes(userId)) {
+          // dateKey를 map 함수에 키값으로 사용해서 해당 배열이 존재하지 않을 때 배열 초기화
+          if (!map[dateKey]) {
+            map[dateKey] = [];
+          }
+
+          map[dateKey].push(group); // 해당 날짜에 사용자가 참여한 모임만 추가
         }
-
-        map[dateKey].push(group); // 해당 날짜에 모임 추가
       });
 
       setGroupMap(map);
     };
 
     fetchGroups();
-  }, []);
+  }, [userId]);
 
   // 달력 셀 렌더링
   const renderCells = () => {

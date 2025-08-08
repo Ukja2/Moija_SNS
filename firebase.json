@@ -3,6 +3,10 @@
     "site": "sns-service-204a6",
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [{ "source": "**", "destination": "/index.html" }]
+    "headers": [
+      { "source": "/manifest.webmanifest", "headers": [ { "key": "Content-Type", "value": "application/manifest+json" } ] },
+      { "source": "/service-worker.js", "headers": [ { "key": "Cache-Control", "value": "no-cache" } ] }
+    ],
+    "rewrites": [ { "source": "**", "destination": "/index.html" } ]
   }
 }

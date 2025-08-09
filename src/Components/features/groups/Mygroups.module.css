@@ -90,3 +90,17 @@
 .deleteBtn:hover {
   background: #ff665a;
 }
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.backButton:hover {
+  opacity: 0.8;
+}

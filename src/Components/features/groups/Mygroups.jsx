@@ -1,4 +1,3 @@
-// src/Components/features/groups/MyGroups.jsx
 import React, { useEffect, useState } from "react";
 import { db, auth } from "../../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -10,12 +9,15 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { FiArrowLeft } from "react-icons/fi"; 
+import { useNavigate } from "react-router-dom"; 
 import styles from "./Mygroups.module.css";
 
 function MyGroups() {
   const [user] = useAuthState(auth);
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); 
 
   const handleDelete = async (groupId) => {
     if (!window.confirm("정말 이 모임을 삭제하시겠어요?")) return;
@@ -57,7 +59,10 @@ function MyGroups() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.headerRow}>
-        <h3 className={styles.title}>내가 만든 모임</h3>
+        <div className={styles.backButton} onClick={() => navigate(-1)}>
+          <FiArrowLeft />
+          <span>내가 만든 모임</span>
+        </div>
       </div>
 
       {groups.length === 0 ? (

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // ✅ useEffect 추가
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'; // ✅ onAuthStateChanged 추가
 import style from './Login.module.css';
-
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -10,15 +9,24 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // 로그인 상태에서 login 페이지로 접근하면 즉시 홈으로
+  useEffect(() => {
+    const auth = getAuth();
+    const unsub = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate('/home', { replace: true });
+      }
+    });
+    return () => unsub();
+  }, [navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     const auth = getAuth();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, username, password);
-      console.log('로그인 성공:', userCredential.user);
-      navigate('/home');
+      await signInWithEmailAndPassword(auth, username, password);
     } catch (error) {
       alert('아이디 또는 비밀번호가 잘못되었습니다.');
     } finally {
@@ -28,12 +36,10 @@ function Login() {
 
   return (
     <div className={style.pageWrapper}>
-
       <div className={style.logoWrapper}>
         <p className={style.logoSubtitle}>우리 동네, 익명으로 소통하는 공간</p>
         <h2 className={style.loginTitle}>다함께 모이자!</h2>
       </div>
-
 
       <form onSubmit={handleSubmit} className={style.loginForm}>
         <input

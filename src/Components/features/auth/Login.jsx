@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'; // ✅ useEffect 추가
+import React, { useState, useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'; // ✅ onAuthStateChanged 추가
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'; 
 import style from './Login.module.css';
 
 function Login() {
